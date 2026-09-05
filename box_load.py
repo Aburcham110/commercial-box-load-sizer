@@ -113,10 +113,14 @@ def report(i: In, r: dict):
 
 def pf(label, default=None):
     while True:
-        s=input(f"{label}"+ (f" [{default}]" if default is not None else ")+": ").strip()
-        if not s and default is not None: return float(default)
-        try: return float(s)
-        except ValueError: print("Enter a number.")
+        suffix = f" [{default}]" if default is not None else ""
+        s = input(f"{label}{suffix}: ").strip()
+        if not s and default is not None:
+            return float(default)
+        try:
+            return float(s)
+        except ValueError:
+            print("Enter a number.")
 
 def pc(label, choices, default):
     while True:
